@@ -6,16 +6,20 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: 'mysql',
+    port: parseInt(process.env.DB_PORT, 10),
+    dialect: 'postgres',  // Change dialect here from 'mysql' to 'postgres'
+
     dialectOptions: {
       ssl: {
-        rejectUnauthorized: true, // or false if your DB certificate is self-signed
+        require: true,       // Required for most cloud Postgres
+        rejectUnauthorized: false
       }
     },
+
     pool: {
-      acquire: 60000 // increase connection acquire timeout to 60 seconds
+      acquire: 60000        // Increase timeout to 60 seconds
     },
+
     logging: false
   }
 );
