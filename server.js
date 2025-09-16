@@ -20,7 +20,7 @@ const analyticsRoutes = require('./routes/analytics');
 const adminRoutes = require('./routes/admin');
 
 const { authenticateToken } = require('./middleware/auth');
-const errorHandler = require('./middleware/errorHandler');
+//const errorHandler = require('./middleware/errorHandler');
 const db = require('./config/database');
 
 const app = express();
@@ -98,7 +98,7 @@ io.on('connection', (socket) => {
 app.set('io', io);
 
 // Error handling middleware
-app.use(errorHandler);
+//app.use(errorHandler);
 
 // 404 handler
 app.use('*', (req, res) => {
