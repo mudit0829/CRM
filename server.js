@@ -20,10 +20,11 @@ app.get('/', (req, res) => {
 
 const start = async () => {
   try {
+    console.log('Trying to authenticate to DB...');
     await sequelize.authenticate();
+    console.log('Authentication OK. Syncing DB...');
     await sequelize.sync();
     console.log('Database connected and synced');
-
     app.listen(process.env.PORT || 10000, () => {
       console.log('Server started on port ' + (process.env.PORT || 10000));
     });
